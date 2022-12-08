@@ -11,7 +11,10 @@ import CategoryIcon from "@mui/icons-material/Category";
 import DataSaverOnIcon from "@mui/icons-material/DataSaverOn";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PinIcon from "@mui/icons-material/Pin";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  
+  const {cart} = useSelector(state => state.TodoReducer)
   const [navClose, setNavClose] = useState(
     localStorage.getItem("navbar") || "false"
   );
@@ -27,6 +30,7 @@ const Navbar = () => {
     }
     localFunc();
   }
+
 
   return (
     <div className="siteBar">
@@ -46,6 +50,7 @@ const Navbar = () => {
           <li>
             <NavLink to="/karzinka">
               <AddShoppingCartIcon className="icon" />
+              <span> {cart.length} </span>
               {navClose === "false" ? "karzinka" : ""}
             </NavLink>
           </li>

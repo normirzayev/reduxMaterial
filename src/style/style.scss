@@ -133,6 +133,18 @@
       backdrop-filter: blur(10px);
       background-color: rgba(255, 255, 255, 0.5);
     }
+
+    .cardBody {
+      display: flex;
+      gap: 20px;
+      .cardItem {
+        overflow: hidden;
+        & > div {
+          padding: 0;
+        }
+        padding: 0;
+      }
+    }
   }
 }
 .projectAdd {

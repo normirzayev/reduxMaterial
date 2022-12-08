@@ -3,4 +3,7 @@ export const Type = {
   edit: "edit",
   del: "del",
   cartAdd: "cartAdd",
+  cartPlus:"cartPlus",
+  cartMinus:"cartMinus",  
+  cartRemove:"cartRemove"
 };

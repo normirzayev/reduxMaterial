@@ -13,8 +13,8 @@ const ProjectAdd = () => {
   const [inputData, setInputData] = useState({
     id: "",
     name: "",
-    email: "",
-    password: "",
+    about: "",
+    narx: "",
     img: "",
   });
 
@@ -22,9 +22,10 @@ const ProjectAdd = () => {
     setInputData({
       id: "",
       name: "",
-      email: "",
-      password: "",
+      about: "",
+      narx: "",
       img: "",
+      soni: 0,
     });
   };
 
@@ -75,9 +76,9 @@ const ProjectAdd = () => {
     setInputData({
       id: elem.id,
       name: elem.name,
-      email: elem.email,
-      password: elem.password,
-      img:elem.img
+      about: elem.about,
+      narx: elem.narx,
+      img: elem.img,
     });
     setTableShow(true);
   };
@@ -123,20 +124,20 @@ const ProjectAdd = () => {
           />
           <TextField
             className="input"
-            label="email"
-            type="email"
+            label="about"
+            type="text"
             variant="outlined"
-            name="email"
-            value={inputData.email}
+            name="about"
+            value={inputData.about}
             onChange={changeFunc}
           />
           <TextField
             className="input"
-            label="password"
-            type="password"
+            label="narx"
+            type="number"
             variant="outlined"
-            name="password"
-            value={inputData.password}
+            name="narx"
+            value={inputData.narx}
             onChange={changeFunc}
           />
           <TextField
@@ -157,7 +158,7 @@ const ProjectAdd = () => {
             color="success"
             onClick={sendFunc}
           >
-            qo'shish
+            {!inputData.id ? "qo'shish": 'tahrirlash'}
           </Button>
         </form>
       ) : (

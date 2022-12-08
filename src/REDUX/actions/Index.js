@@ -17,15 +17,35 @@ export const editData = (inputData) => {
 
 export const delFunc = (id) => {
   return {
-    type:Type.del,
-    payload: id
-  }
-}
-
+    type: Type.del,
+    payload: id,
+  };
+};
 
 export const cartAdd = (cartData) => {
   return {
-    type:Type.cartAdd,
-    payload:cartData
+    type: Type.cartAdd,
+    payload: cartData,
+  };
+};
+
+export const cartPlusFunc = (cartData) => {
+  return {
+    type: Type.cartPlus,
+    payload: cartData,
+  };
+};
+export const cartMinusFunc = (cartData) => {
+  return {
+    type: Type.cartMinus,
+    payload: cartData,
+  };
+};
+
+
+export const cartRemoveFunc = (id) => {
+  return {
+    type:Type.cartRemove,
+    payload:id
   }
 }

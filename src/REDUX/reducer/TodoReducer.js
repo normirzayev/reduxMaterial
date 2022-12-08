@@ -39,19 +39,63 @@ const TodoReducer = (state = initialState, { type, payload }) => {
       };
 
     case Type.cartAdd:
-      const { cartData } = payload;
-      // console.log(state.cart);
-      console.log(payload);
       if (localStorage.getItem("cart")) {
-        if (state.cart.filter((val) => val.id === cartData.id).length === 0) {
+        if (state.cart.filter((val) => val.id === payload.id).length === 0) {
           localStorage.setItem(
             "cart",
-            JSON.stringify([...state.cart, cartData])
+            JSON.stringify([
+              ...state.cart,
+              { ...payload, soni: payload.soni + 1 },
+            ])
           );
         }
       } else {
-        localStorage.setItem("cart", JSON.stringify([cartData]));
+        localStorage.setItem("cart", JSON.stringify([{ ...payload, soni: 1 }]));
       }
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("cart")),
+      };
+
+    case Type.cartPlus:
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(
+          state.cart.map((item) =>
+            item.id == payload.id
+              ? { ...payload, soni: payload.soni + 1 }
+              : item
+          )
+        )
+      );
+
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("cart")),
+      };
+
+    case Type.cartMinus:
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(
+          state.cart.map((item) =>
+            item.id === payload.id && payload.soni > 1
+              ? { ...payload, soni: payload.soni - 1 }
+              : item
+          )
+        )
+      );
+      
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("cart")),
+      };
+
+    case Type.cartRemove:
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(state.cart.filter((val) => val.id !== payload))
+      );
       return {
         ...state,
         cart: JSON.parse(localStorage.getItem("cart")),
